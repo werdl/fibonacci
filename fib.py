@@ -18,6 +18,8 @@ from mpmath import power as pow, mpf, sqrt, mpi
 import mpmath
 import time
 import sys
+from math import ceil
+import numpy as np
 
 def OneOrZero(prompt, fail):
     """
@@ -47,17 +49,18 @@ class Fibonacci:
         for _ in range(2,n): # discard counter
             table.append(table[-1]+table[-2])
         return table
-   
+
     @staticmethod
     def nth(n: int, accuracy: int = 1000) -> int:
-        if accuracy>650:
+        if accuracy>650: # should be 640, but 650 just in case 
             sys.set_int_max_str_digits(accuracy+10)
         mpmath.mp.prec=accuracy # we set these to the same value, but they
         mpmath.mp.dps=accuracy  # should be different, but
         phi=mpf((mpf('1')+mpf(sqrt('5')))/mpf('2'))
         start=time.time()
+        mn=mpf(n)
         value=mpf(
-            (pow(phi,mpf(n))-pow(-phi,-mpf(n)))
+            (pow(phi,mn)-pow(-phi,-mn))
             /
             (sqrt(mpf('5')))
         ) # generated value
@@ -88,18 +91,17 @@ class Fibonacci:
 
 max_n=abs(int(input("Please enter the term number of the number \
 you want (negatives will be abs'ed): ")))
-all_done=0
 if not OneOrZero("Would you like a list (0) or the term (1)? ",
                  "Please enter a value that is either 0 or 1."):
     start_table=time.time()
     result=Fibonacci.gen_table(max_n)
     end_table=time.time()
-    print(str(result).replace("'","").replace("[","").replace("]",""))
+    # print(str(result).replace("'","").replace("[","").replace("]",""))
     print(f"That that took {end_table-start_table}s")
-
 else:
     start_raw=time.time()
-    result=Fibonacci.nth(max_n, max_n) # why not max_n/4? python rounding :)
+    result=Fibonacci.numpy_nth(max_n) # max_n/4 (ceil because python round() fails) , ceil(max_n/4)
     end_raw=time.time()
-    print(f"That that took {result[1]}s to do the actual maths, and \
+    print(result)
+    print(f"That that took s to do the actual maths, and \
 {end_raw-start_raw}s overall")
