@@ -89,6 +89,18 @@ class Fibonacci:
         else:
             return False
 
+    @staticmethod
+    def numpy_nth(n: int):
+        if n>650: # should be 640, but 650 just in case 
+            sys.set_int_max_str_digits(n+10)
+        start=time.time()
+        matrix=np.array([
+            [1,1],
+            [1,0]
+        ], dtype=object)
+        result_matrix=np.linalg.matrix_power(matrix, n-1)
+        end=time.time()
+        return (result_matrix[0, 0],end-start)
 max_n=abs(int(input("Please enter the term number of the number \
 you want (negatives will be abs'ed): ")))
 if not OneOrZero("Would you like a list (0) or the term (1)? ",
@@ -102,6 +114,6 @@ else:
     start_raw=time.time()
     result=Fibonacci.numpy_nth(max_n) # max_n/4 (ceil because python round() fails) , ceil(max_n/4)
     end_raw=time.time()
-    print(result)
-    print(f"That that took s to do the actual maths, and \
+    print(result[0])
+    print(f"That that took {result[1]}s to do the actual maths, and \
 {end_raw-start_raw}s overall")
