@@ -46,7 +46,7 @@ class Fibonacci:
         table=[]
         table.append(0)
         table.append(1)
-        for _ in range(2,n): # discard counter
+        for _ in range(1,n): # discard counter
             table.append(table[-1]+table[-2])
         return table
 
@@ -55,7 +55,7 @@ class Fibonacci:
         if accuracy>650: # should be 640, but 650 just in case 
             sys.set_int_max_str_digits(accuracy+10)
         mpmath.mp.prec=accuracy # we set these to the same value, but they
-        mpmath.mp.dps=accuracy  # should be different, but
+        mpmath.mp.dps=accuracy  # should be different, but it takes too much time to run
         phi=mpf((mpf('1')+mpf(sqrt('5')))/mpf('2'))
         start=time.time()
         mn=mpf(n)
@@ -108,12 +108,12 @@ if not OneOrZero("Would you like a list (0) or the term (1)? ",
     start_table=time.time()
     result=Fibonacci.gen_table(max_n)
     end_table=time.time()
-    # print(str(result).replace("'","").replace("[","").replace("]",""))
+    print(str(result).replace("'","").replace("[","").replace("]",""))
     print(f"That that took {end_table-start_table}s")
 else:
     start_raw=time.time()
-    result=Fibonacci.numpy_nth(max_n) # max_n/4 (ceil because python round() fails) , ceil(max_n/4)
+    result=Fibonacci.nth(max_n, ceil(max_n/4)) # max_n/4 (ceil because python round() fails) , ceil(max_n/4)
     end_raw=time.time()
-    print(result[0])
+    # print(result[0])
     print(f"That that took {result[1]}s to do the actual maths, and \
 {end_raw-start_raw}s overall")
