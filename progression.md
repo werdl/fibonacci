@@ -171,3 +171,7 @@ Over this document, we have examined several methods. Our tests, however show no
 Also, when running the code snippets the timing may seem inaccurate. This is because the print calls become rather costly, and so we don't include them in the time.
 
 We hope you enjoyed this document, so we'll see you next time!
+
+## Contibutors:
+- (werdl)[http://github.com/werdl]
+- (uimaxbai)[http://github.com/uimaxbai]
