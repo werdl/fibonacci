@@ -94,7 +94,7 @@ The issue lay in the way that Python stores floating point numbers. It uses the 
 However, after a few Google searches and a little documentation reading, we had a solution.
 
 ## The Mathematical Method 2
-Using the same formula as before, but this time with the addition of a library called [`mpmath`](http://mpmath.org), which instead of using Python's backend, it utilises the [Python binding](https://github.com/aleaxit/gmpy) of [`GMP`](https://gmplib.org/), a GNU library for arbitrary precision maths.
+Using the same formula as before, but this time with the addition of a library called [`mpmath`](http://mpmath.org), which instead of using Python's backend, it utilises the [Python binding](https://github.com/aleaxit/gmpy) of [`GMP`](https://gmplib.org/), a GNU library for arbitrary precision maths. Since the Python round function didn't want to play ball, I just did a quick workaround with string manipulation.
 ```py
 import mpmath
 mpmath.mp.prec # precision
@@ -175,3 +175,29 @@ We hope you enjoyed this document, so we'll see you next time!
 ## Contibutors:
 - [werdl](http://github.com/werdl)
 - [uimaxbai](http://github.com/uimaxbai)
+
+## Benchmarking
+Tested on my computer, here is the `neofetch` output for my system (might look strange on mobile):
+```
+       _,met$$$$$gg.          werdl@delorian 
+    ,g$$$$$$$$$$$$$$$P.       -------------- 
+  ,g$$P"     """Y$$.".        OS: Debian GNU/Linux 12 (bookworm) x86_64 
+ ,$$P'              `$$$.     Host: Z590 VISION G -CF 
+',$$P       ,ggs.     `$$b:   Kernel: 6.1.0-13-amd64 
+`d$$'     ,$P"'   .    $$$    Uptime: Not putting this on Github lol
+ $$P      d$'     ,    $$P    Packages: 2462 (dpkg) 
+ $$:      $$.   -    ,d$$'    Shell: bash 5.2.15 
+ $$;      Y$b._   _,d$P'      Resolution: 1920x1200 
+ Y$$.    `.`"Y$$$$P"'         DE: Plasma 5.27.5 
+ `$$b      "-.__              WM: KWin 
+  `Y$$                        Theme: [Plasma], Breeze [GTK2/3] 
+   `Y$$.                      Icons: [Plasma], breeze-dark [GTK2/3] 
+     `$$b.                    Terminal: vscode 
+       `Y$$b.                 CPU: 11th Gen Intel i5-11400F (12) @ 4.400GHz 
+          `"Y$b._             GPU: NVIDIA Quadro M2000 
+              `"""            Memory: 6556MiB / 31960MiB 
+
+```
+                                                      
+                                                      
+
