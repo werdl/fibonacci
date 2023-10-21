@@ -45,9 +45,9 @@ ValueError: Exceeds the limit (4300 digits) for integer string conversion; use s
 
 ## The Mathematical Method
 This one will need some explaining. The Fibonacci sequence, like many things in nature and mathematics, is tied to the golden ratio (phi $\varphi$), expressed as the equation 
-### $\varphi=\frac{1+\sqrt{5}}{2}=1.618...$
+### $`\varphi=\frac{1+\sqrt{5}}{2}=1.618...`$
 So, there is a formula for the nth element of the sequence using this fact. The fastest one is known as Bidet's formula, and the version we used is this:
-### $u_{n}=\frac{\varphi^n-(-\varphi)^{-n}}{\sqrt{5}}$
+### $`u_{n}=\frac{\varphi^n-(-\varphi)^{-n}}{\sqrt{5}}`$
 
 The Python implementation revolves around what was originally rather an unreadable one-liner that we have since changed:
 ```py
@@ -142,9 +142,9 @@ def fib(n: int, accuracy: int = 1000) -> int:
 At this point, you may be wondering how we could possibly get any faster. You also may be wondering how we know these numbers are correct (We verified as far as we could on [bigprimes.net](http://bigprimes.net), and they all (1000th, 10000th etc.) seem to end in 875. Based on our research we think it has to do with the [Pisano period](https://en.wikipedia.org/wiki/Pisano_period) and how that is correlated to the Fibonacci sequence).
 
 ## The Matrix Multiplication Method
-$\begin{matrix}
+$`\begin{matrix}
 u_n = \begin{bmatrix}1 & 1 \\ 1 & 0\end{bmatrix}^n\begin{bmatrix}1 \\ 0\end{bmatrix}\\
-\end{matrix}$
+\end{matrix}`$
 
 Matrix multiplication is known online as the fastest. But right at the beginning of this document, we said it was _still very much an open problem_. This is because we still don't know the fastest method of matrix multiplication! Also, our tests seemed to show the previous method as faster with very large numbers, even when we reran both methods. So these two things mean the problem is technically as yet unsolved!
 
