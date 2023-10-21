@@ -198,6 +198,4 @@ Tested on my computer, here is the `neofetch` output for my system (might look s
               `"""            Memory: 6556MiB / 31960MiB 
 
 ```
-                                                      
-                                                      
-
+Tested with stock `Python 3.11.2`, compiled with `GCC 12.2.0`
