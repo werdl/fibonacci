@@ -101,19 +101,20 @@ class Fibonacci:
         result_matrix=np.linalg.matrix_power(matrix, n-1)
         end=time.time()
         return (result_matrix[0, 0],end-start)
-max_n=abs(int(input("Please enter the term number of the number \
-you want (negatives will be abs'ed): ")))
-if not OneOrZero("Would you like a list (0) or the term (1)? ",
-                 "Please enter a value that is either 0 or 1."):
-    start_table=time.time()
-    result=Fibonacci.gen_table(max_n)
-    end_table=time.time()
-    print(str(result).replace("'","").replace("[","").replace("]",""))
-    print(f"That that took {end_table-start_table}s")
-else:
-    start_raw=time.time()
-    result=Fibonacci.nth(max_n, ceil(max_n/4)) # max_n/4 (ceil because python round() fails) , ceil(max_n/4)
-    end_raw=time.time()
-    # print(result[0])
-    print(f"That that took {result[1]}s to do the actual maths, and \
-{end_raw-start_raw}s overall")
+if __name__=="__main__":
+    max_n=abs(int(input("Please enter the term number of the number \
+    you want (negatives will be abs'ed): ")))
+    if not OneOrZero("Would you like a list (0) or the term (1)? ",
+                    "Please enter a value that is either 0 or 1."):
+        start_table=time.time()
+        result=Fibonacci.gen_table(max_n)
+        end_table=time.time()
+        print(str(result).replace("'","").replace("[","").replace("]",""))
+        print(f"That that took {end_table-start_table}s")
+    else:
+        start_raw=time.time()
+        result=Fibonacci.nth(max_n, ceil(max_n/4)) # max_n/4 (ceil because python round() fails) , ceil(max_n/4)
+        end_raw=time.time()
+        # print(result[0])
+        print(f"That that took {result[1]}s to do the actual maths, and \
+    {end_raw-start_raw}s overall")
