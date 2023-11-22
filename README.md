@@ -14,7 +14,7 @@ def fib(n: int) -> int:
 - Benchmark for 40 (expected 102334155): `11.5s`
 <hr>
 
-- Though it works, it has a time complexity of O(2^n), an obviously indesirable amount.
+- Though it works, it has a time complexity of $O(2^n)$, an obviously indesirable amount.
 
 ## The Addition Method
 ```py
